@@ -1,0 +1,56 @@
+<!-- Mini-SOC — Règles de détection personnalisées -->
+<!-- Auteur : Said | Avril 2026 -->
+
+<group name="custom,mini-soc">
+
+  <!-- Règle 1 : Brute force SSH critique (>10 échecs même IP) -->
+  <rule id="100001" level="12">
+    <if_matched_sid>5710</if_matched_sid>
+    <same_source_ip />
+    <description>Brute force SSH critique — plus de 10 echecs depuis la meme IP</description>
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+  </rule>
+
+  <!-- Règle 2 : Scan de ports détecté -->
+  <rule id="100002" level="8">
+    <if_sid>1002</if_sid>
+    <match>port scan</match>
+    <description>Scan de ports detecte depuis une source externe</description>
+    <mitre>
+      <id>T1046</id>
+    </mitre>
+  </rule>
+
+  <!-- Règle 3 : Connexion SSH réussie depuis IP inconnue -->
+  <rule id="100003" level="9">
+    <if_sid>5715</if_sid>
+    <not_same_source_ip />
+    <description>Connexion SSH reussie depuis une IP non referencee</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+  </rule>
+
+  <!-- Règle 4 : Modification fichier système critique -->
+  <rule id="100004" level="11">
+    <if_sid>550</if_sid>
+    <match>/etc/passwd|/etc/shadow|/etc/sudoers</match>
+    <description>Modification d un fichier systeme critique detectee</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+  </rule>
+
+  <!-- Règle 5 : Tentative d'injection SQL dans les logs Apache -->
+  <rule id="100005" level="10">
+    <if_sid>31101</if_sid>
+    <url_match>union|select|insert|drop|;--|0x</url_match>
+    <description>Tentative d injection SQL detectee dans les logs web</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+  </rule>
+
+</group>
