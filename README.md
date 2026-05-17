@@ -11,8 +11,8 @@ Mac hôte (Docker Desktop)
 └── Wazuh Manager + Indexer + Dashboard  ←  SOC / SIEM
 
 UTM (réseau isolé 192.168.64.0/24)
-├── VM Cible    192.168.64.20  —  Ubuntu Server 22.04 + Agent Wazuh
-└── VM Attacker 192.168.64.30  —  Kali Linux
+├── VM Cible    192.168.64.20  -  Ubuntu Server 22.04 + Agent Wazuh
+└── VM Attacker 192.168.64.30  -  Kali Linux
 ```
 
 ## 🎯 Objectifs
