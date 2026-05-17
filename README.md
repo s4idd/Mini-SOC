@@ -71,4 +71,4 @@ mini-soc/
 
 ---
 
-*Projet réalisé dans le cadre d'une montée en compétences en cybersécurité — Said, 2026*
+*Projet réalisé dans le cadre d'une montée en compétences en cybersécurité - Said, 2026*
